@@ -44,7 +44,7 @@ const FlightCard: React.FC<FlightCardProps> = ({ flight }) => {
           </div>
         </div>
         <div className="text-right">
-          <span className="text-2xl font-semibold text-gray-900">${flight.price}</span>
+          <span className="text-2xl font-semibold text-gray-900">₹{flight.price}</span>
           <p className="text-sm text-gray-500">per person</p>
         </div>
       </div>

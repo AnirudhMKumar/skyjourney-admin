@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../components/layout/Header";
@@ -13,7 +12,6 @@ const BookingConfirmation = () => {
   
   const bookingNumber = `SJ${Math.floor(100000 + Math.random() * 900000)}`;
   
-  // If there's no flight in the state, redirect to home
   if (!flight) {
     React.useEffect(() => {
       navigate("/");
@@ -62,7 +60,7 @@ const BookingConfirmation = () => {
               
               <div>
                 <p className="text-sm text-gray-500 mb-1">Total Amount Paid</p>
-                <p className="font-semibold">${totalPrice || (flight.price * (passengers?.length || 1)).toFixed(2)}</p>
+                <p className="font-semibold">₹{totalPrice || (flight.price * (passengers?.length || 1)).toFixed(2)}</p>
               </div>
               
               <div>

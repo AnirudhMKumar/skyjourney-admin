@@ -182,15 +182,15 @@ const FlightDetails: React.FC<FlightDetailsProps> = ({ flight }) => {
             <div className="space-y-3 mb-6">
               <div className="flex justify-between">
                 <span className="text-gray-600">Base fare</span>
-                <span>${(flight.price * 0.8).toFixed(2)}</span>
+                <span>₹{(flight.price * 0.8).toFixed(2)}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-600">Taxes & fees</span>
-                <span>${(flight.price * 0.2).toFixed(2)}</span>
+                <span>₹{(flight.price * 0.2).toFixed(2)}</span>
               </div>
               <div className="border-t border-gray-200 pt-3 flex justify-between font-semibold">
                 <span>Total</span>
-                <span className="text-xl">${flight.price.toFixed(2)}</span>
+                <span className="text-xl">₹{flight.price.toFixed(2)}</span>
               </div>
             </div>
             

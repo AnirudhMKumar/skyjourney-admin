@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Search, Filter, ArrowUpDown, Eye, XCircle, CheckCircle } from "lucide-react";
 import BlurContainer from "../ui/BlurContainer";
@@ -21,7 +20,6 @@ const BookingManager = () => {
   const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Sample booking data
   const [bookings, setBookings] = useState<Booking[]>([
     {
       id: "B-12345",
@@ -31,7 +29,7 @@ const BookingManager = () => {
       to: "Los Angeles (LAX)",
       date: "2023-08-15",
       status: "confirmed",
-      amount: 420,
+      amount: 28420,
     },
     {
       id: "B-12346",
@@ -41,7 +39,7 @@ const BookingManager = () => {
       to: "Paris (CDG)",
       date: "2023-08-14",
       status: "pending",
-      amount: 320,
+      amount: 22320,
     },
     {
       id: "B-12347",
@@ -51,7 +49,7 @@ const BookingManager = () => {
       to: "Sydney (SYD)",
       date: "2023-08-13",
       status: "completed",
-      amount: 870,
+      amount: 60870,
     },
     {
       id: "B-12348",
@@ -61,7 +59,7 @@ const BookingManager = () => {
       to: "Miami (MIA)",
       date: "2023-08-12",
       status: "cancelled",
-      amount: 380,
+      amount: 26380,
     },
     {
       id: "B-12349",
@@ -71,7 +69,7 @@ const BookingManager = () => {
       to: "Seattle (SEA)",
       date: "2023-08-11",
       status: "confirmed",
-      amount: 290,
+      amount: 20290,
     },
     {
       id: "B-12350",
@@ -81,7 +79,7 @@ const BookingManager = () => {
       to: "Barcelona (BCN)",
       date: "2023-08-16",
       status: "confirmed",
-      amount: 210,
+      amount: 14210,
     },
     {
       id: "B-12351",
@@ -91,7 +89,7 @@ const BookingManager = () => {
       to: "Melbourne (MEL)",
       date: "2023-08-17",
       status: "pending",
-      amount: 180,
+      amount: 12180,
     },
   ]);
 
@@ -280,7 +278,7 @@ const BookingManager = () => {
                     </span>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    ${booking.amount}
+                    ₹{booking.amount}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                     <div className="flex justify-end gap-2">
@@ -366,7 +364,7 @@ const BookingManager = () => {
                   </p>
                   <p className="text-sm">
                     <span className="text-gray-500">Amount:</span>{" "}
-                    <span className="font-medium">${selectedBooking.amount}</span>
+                    <span className="font-medium">₹{selectedBooking.amount}</span>
                   </p>
                 </div>
               </div>

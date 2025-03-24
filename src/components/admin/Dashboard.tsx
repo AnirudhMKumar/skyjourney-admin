@@ -1,4 +1,3 @@
-
 import React from "react";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
 import { ArrowUp, ArrowDown, DollarSign, Users } from "lucide-react";
@@ -34,7 +33,7 @@ const Dashboard = () => {
     },
     {
       title: "Revenue",
-      value: "$1.2M",
+      value: "₹1.2M",
       change: "+8.2%",
       trend: "up",
       icon: <DollarSign className="w-5 h-5" />,
@@ -50,7 +49,7 @@ const Dashboard = () => {
     },
     {
       title: "Avg. Ticket Price",
-      value: "$412",
+      value: "₹28,412",
       change: "+5.3%",
       trend: "up",
       icon: <DollarSign className="w-5 h-5" />,
@@ -65,7 +64,7 @@ const Dashboard = () => {
       from: "New York",
       to: "Los Angeles",
       date: "2023-08-15",
-      amount: "$420",
+      amount: "₹28,420",
     },
     {
       id: "B-12346",
@@ -73,7 +72,7 @@ const Dashboard = () => {
       from: "London",
       to: "Paris",
       date: "2023-08-14",
-      amount: "$320",
+      amount: "₹22,320",
     },
     {
       id: "B-12347",
@@ -81,7 +80,7 @@ const Dashboard = () => {
       from: "Tokyo",
       to: "Sydney",
       date: "2023-08-13",
-      amount: "$870",
+      amount: "₹60,870",
     },
     {
       id: "B-12348",
@@ -89,7 +88,7 @@ const Dashboard = () => {
       from: "Chicago",
       to: "Miami",
       date: "2023-08-12",
-      amount: "$380",
+      amount: "₹26,380",
     },
     {
       id: "B-12349",
@@ -97,7 +96,7 @@ const Dashboard = () => {
       from: "San Francisco",
       to: "Seattle",
       date: "2023-08-11",
-      amount: "$290",
+      amount: "₹20,290",
     },
   ];
 

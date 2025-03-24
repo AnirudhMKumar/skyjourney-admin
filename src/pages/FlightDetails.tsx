@@ -22,18 +22,18 @@ const FlightDetails = () => {
       // Mock data - in a real app, this would be fetched from an API
       const mockFlight: Flight = {
         id: id || "FL001",
-        airline: "SkyJourney Airways",
-        airlineCode: "SJ",
-        flightNumber: "SJ101",
-        departureAirport: "JFK",
-        departureCity: "New York",
+        airline: "Air India",
+        airlineCode: "AI",
+        flightNumber: "AI101",
+        departureAirport: "DEL",
+        departureCity: "Delhi",
         departureTime: "08:30",
-        arrivalAirport: "LAX",
-        arrivalCity: "Los Angeles",
-        arrivalTime: "11:45",
-        duration: "5h 15m",
+        arrivalAirport: "BOM",
+        arrivalCity: "Mumbai",
+        arrivalTime: "10:45",
+        duration: "2h 15m",
         stops: 0,
-        price: 349,
+        price: 4999,
         aircraft: "Boeing 787 Dreamliner",
       };
       

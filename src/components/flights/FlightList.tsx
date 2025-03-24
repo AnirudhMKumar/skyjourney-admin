@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import FlightCard, { Flight } from "./FlightCard";
 import { Filter, ArrowUpDown } from "lucide-react";
@@ -180,14 +179,14 @@ const FlightList: React.FC<FlightListProps> = ({ flights: initialFlights }) => {
               <h4 className="font-medium mb-3">Price Range</h4>
               <div className="space-y-4">
                 <div className="flex justify-between text-sm">
-                  <span>${filterPrice[0]}</span>
-                  <span>${filterPrice[1]}</span>
+                  <span>₹{filterPrice[0]}</span>
+                  <span>₹{filterPrice[1]}</span>
                 </div>
                 <input
                   type="range"
                   min="0"
-                  max="2000"
-                  step="50"
+                  max="10000"
+                  step="500"
                   value={filterPrice[1]}
                   onChange={(e) => setFilterPrice([filterPrice[0], parseInt(e.target.value)])}
                   className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
