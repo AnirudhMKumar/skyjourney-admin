@@ -3,6 +3,7 @@ import React from "react";
 import { ChevronRight, Clock, Plane } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
+// Interface defining the properties of a Flight
 export interface Flight {
   id: string;
   airline: string;
@@ -20,20 +21,26 @@ export interface Flight {
   aircraft?: string;
 }
 
+// Interface for FlightCard component props
 interface FlightCardProps {
   flight: Flight;
 }
 
+// FlightCard component that displays summary information about a flight
 const FlightCard: React.FC<FlightCardProps> = ({ flight }) => {
+  // Hook for navigation between pages
   const navigate = useNavigate();
 
+  // Function to handle the "View Details" button click
   const handleViewDetails = () => {
     navigate(`/flight/${flight.id}`);
   };
 
   return (
     <div className="glass-card hover-lift">
+      {/* Airline and price information */}
       <div className="flex justify-between items-center mb-4">
+        {/* Airline details */}
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center">
             {flight.airlineCode}
@@ -43,18 +50,23 @@ const FlightCard: React.FC<FlightCardProps> = ({ flight }) => {
             <p className="text-sm text-gray-500">{flight.flightNumber}</p>
           </div>
         </div>
+        
+        {/* Price information */}
         <div className="text-right">
           <span className="text-2xl font-semibold text-gray-900">₹{flight.price}</span>
           <p className="text-sm text-gray-500">per person</p>
         </div>
       </div>
 
+      {/* Flight route information */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+        {/* Departure information */}
         <div className="flex flex-col items-start mb-4 md:mb-0">
           <span className="text-2xl font-semibold text-gray-900">{flight.departureTime}</span>
           <span className="text-gray-600">{flight.departureCity} ({flight.departureAirport})</span>
         </div>
 
+        {/* Flight duration and stops */}
         <div className="flex flex-col items-center">
           <div className="text-gray-500 text-sm">{flight.duration}</div>
           <div className="relative w-20 md:w-32 lg:w-48 h-px bg-gray-300 my-2">
@@ -71,12 +83,14 @@ const FlightCard: React.FC<FlightCardProps> = ({ flight }) => {
           </div>
         </div>
 
+        {/* Arrival information */}
         <div className="flex flex-col items-end">
           <span className="text-2xl font-semibold text-gray-900">{flight.arrivalTime}</span>
           <span className="text-gray-600">{flight.arrivalCity} ({flight.arrivalAirport})</span>
         </div>
       </div>
 
+      {/* Footer section with duration and view details button */}
       <div className="flex justify-between items-center pt-4 border-t border-gray-200">
         <div className="flex items-center gap-2 text-gray-600">
           <Clock className="w-4 h-4" />

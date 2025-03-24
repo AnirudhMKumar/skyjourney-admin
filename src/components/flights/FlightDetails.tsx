@@ -1,229 +1,122 @@
 
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Clock, Plane, Calendar, Luggage, Coffee, Wifi, ChevronRight } from "lucide-react";
-import BlurContainer from "../ui/BlurContainer";
+import { ArrowRight, Clock, Plane, Calendar, Users, CreditCard } from "lucide-react";
 import { Flight } from "./FlightCard";
+import BlurContainer from "../ui/BlurContainer";
 
+// Interface defining the props for the FlightDetails component
 interface FlightDetailsProps {
   flight: Flight;
 }
 
+// FlightDetails component that displays detailed information about a flight
 const FlightDetails: React.FC<FlightDetailsProps> = ({ flight }) => {
-  const navigate = useNavigate();
-
-  const handleBookNow = () => {
-    navigate(`/booking/${flight.id}`);
-  };
-
   return (
-    <div className="max-w-6xl mx-auto px-6 py-8">
-      <button
-        onClick={() => navigate(-1)}
-        className="flex items-center gap-2 text-gray-600 hover:text-sky-600 transition-colors mb-8"
-      >
-        <ArrowLeft className="w-5 h-5" />
-        Back to results
-      </button>
-
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2">
-          <BlurContainer>
-            <div className="flex justify-between items-center mb-6">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
-                  {flight.airlineCode}
-                </div>
-                <div>
-                  <h3 className="font-medium text-gray-900">{flight.airline}</h3>
-                  <p className="text-sm text-gray-500">{flight.flightNumber}</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-2 text-gray-600">
-                <Clock className="w-5 h-5" />
-                <span>{flight.duration}</span>
-              </div>
+    <div className="max-w-4xl mx-auto px-6">
+      {/* Flight header section */}
+      <BlurContainer className="mb-8">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+          <div className="flex items-center gap-3 mb-4 md:mb-0">
+            <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-lg font-bold">
+              {flight.airlineCode}
             </div>
-
-            <div className="relative py-8">
-              <div className="absolute left-4 top-0 bottom-0 w-px bg-gray-300"></div>
-
-              <div className="flex gap-6 mb-10 relative">
-                <div className="w-8 h-8 rounded-full bg-sky-500 text-white flex items-center justify-center z-10">
-                  <Plane className="w-4 h-4" />
-                </div>
-                <div className="flex-1">
-                  <div className="flex flex-col md:flex-row md:justify-between md:items-center">
-                    <div>
-                      <div className="text-2xl font-semibold text-gray-900">{flight.departureTime}</div>
-                      <div className="text-gray-600">{flight.departureCity} ({flight.departureAirport})</div>
-                    </div>
-                    <div className="mt-2 md:mt-0 md:text-right">
-                      <div className="text-sm bg-gray-100 px-3 py-1 rounded-full inline-block">
-                        <Calendar className="w-4 h-4 inline-block mr-1" />
-                        <span>Departure Date</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex gap-6 relative">
-                <div className="w-8 h-8 rounded-full bg-sky-500 text-white flex items-center justify-center z-10">
-                  <Plane className="w-4 h-4 transform rotate-90" />
-                </div>
-                <div className="flex-1">
-                  <div className="flex flex-col md:flex-row md:justify-between md:items-center">
-                    <div>
-                      <div className="text-2xl font-semibold text-gray-900">{flight.arrivalTime}</div>
-                      <div className="text-gray-600">{flight.arrivalCity} ({flight.arrivalAirport})</div>
-                    </div>
-                    <div className="mt-2 md:mt-0 md:text-right">
-                      <div className="text-sm bg-gray-100 px-3 py-1 rounded-full inline-block">
-                        <Calendar className="w-4 h-4 inline-block mr-1" />
-                        <span>Arrival Date</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div>
+              <h3 className="text-xl font-medium">{flight.airline}</h3>
+              <p className="text-sm text-gray-500">Flight {flight.flightNumber}</p>
             </div>
-
-            <div className="border-t border-gray-200 pt-6">
-              <h4 className="font-medium text-lg mb-4">Flight Details</h4>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <h5 className="text-sm text-gray-500 mb-2">Aircraft</h5>
-                  <p>{flight.aircraft || "Boeing 787 Dreamliner"}</p>
-                </div>
-                <div>
-                  <h5 className="text-sm text-gray-500 mb-2">Flight Number</h5>
-                  <p>{flight.flightNumber}</p>
-                </div>
-                <div>
-                  <h5 className="text-sm text-gray-500 mb-2">Duration</h5>
-                  <p>{flight.duration}</p>
-                </div>
-                <div>
-                  <h5 className="text-sm text-gray-500 mb-2">Distance</h5>
-                  <p>1,243 miles</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="border-t border-gray-200 mt-6 pt-6">
-              <h4 className="font-medium text-lg mb-4">Amenities</h4>
-              
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="bg-gray-50 p-4 rounded-lg text-center">
-                  <Wifi className="w-6 h-6 mx-auto mb-2 text-sky-500" />
-                  <span className="text-sm">Wi-Fi</span>
-                </div>
-                <div className="bg-gray-50 p-4 rounded-lg text-center">
-                  <Luggage className="w-6 h-6 mx-auto mb-2 text-sky-500" />
-                  <span className="text-sm">Baggage</span>
-                </div>
-                <div className="bg-gray-50 p-4 rounded-lg text-center">
-                  <Coffee className="w-6 h-6 mx-auto mb-2 text-sky-500" />
-                  <span className="text-sm">Meals</span>
-                </div>
-                <div className="bg-gray-50 p-4 rounded-lg text-center">
-                  <div className="w-6 h-6 mx-auto mb-2 text-sky-500 flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-monitor">
-                      <rect width="20" height="14" x="2" y="3" rx="2" />
-                      <line x1="8" x2="16" y1="21" y2="21" />
-                      <line x1="12" x2="12" y1="17" y2="21" />
-                    </svg>
-                  </div>
-                  <span className="text-sm">Entertainment</span>
-                </div>
-              </div>
-            </div>
-          </BlurContainer>
-
-          <BlurContainer className="mt-8">
-            <h4 className="font-medium text-lg mb-4">Baggage Information</h4>
-            
-            <div className="space-y-4">
-              <div className="flex justify-between pb-4 border-b border-gray-200">
-                <div className="flex items-center gap-3">
-                  <Luggage className="w-5 h-5 text-gray-500" />
-                  <div>
-                    <h5 className="font-medium">Carry-on Baggage</h5>
-                    <p className="text-sm text-gray-600">1 personal item + 1 carry-on bag</p>
-                  </div>
-                </div>
-                <div className="text-right">
-                  <span className="text-sm bg-green-100 text-green-800 px-3 py-1 rounded-full">Included</span>
-                </div>
-              </div>
-              
-              <div className="flex justify-between">
-                <div className="flex items-center gap-3">
-                  <Luggage className="w-5 h-5 text-gray-500" />
-                  <div>
-                    <h5 className="font-medium">Checked Baggage</h5>
-                    <p className="text-sm text-gray-600">1 bag up to 23kg</p>
-                  </div>
-                </div>
-                <div className="text-right">
-                  <span className="text-sm bg-green-100 text-green-800 px-3 py-1 rounded-full">Included</span>
-                </div>
-              </div>
-            </div>
-          </BlurContainer>
+          </div>
+          
+          <div className="bg-sky-50 py-2 px-4 rounded-full flex items-center gap-2 text-sky-700">
+            <Clock className="w-4 h-4" />
+            <span>{flight.duration}</span>
+          </div>
         </div>
-
-        <div>
-          <BlurContainer className="sticky top-24">
-            <h3 className="text-xl font-semibold mb-4">Price Summary</h3>
-            
-            <div className="space-y-3 mb-6">
-              <div className="flex justify-between">
-                <span className="text-gray-600">Base fare</span>
-                <span>₹{(flight.price * 0.8).toFixed(2)}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-gray-600">Taxes & fees</span>
-                <span>₹{(flight.price * 0.2).toFixed(2)}</span>
-              </div>
-              <div className="border-t border-gray-200 pt-3 flex justify-between font-semibold">
-                <span>Total</span>
-                <span className="text-xl">₹{flight.price.toFixed(2)}</span>
-              </div>
+        
+        {/* Flight route visualization */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center my-8">
+          <div className="text-center mb-4 md:mb-0 md:text-left">
+            <p className="text-sm text-gray-500">Departure</p>
+            <h3 className="text-3xl font-bold">{flight.departureTime}</h3>
+            <p className="text-gray-700">{flight.departureCity} ({flight.departureAirport})</p>
+          </div>
+          
+          <div className="flex-1 flex items-center justify-center my-4 md:my-0">
+            <div className="w-24 md:w-48 lg:w-64 h-px bg-gray-300 relative">
+              <div className="absolute -top-1 left-0 w-2 h-2 rounded-full bg-gray-400"></div>
+              <Plane className="absolute -top-2.5 left-1/2 transform -translate-x-1/2 w-5 h-5 text-sky-500" />
+              <div className="absolute -top-1 right-0 w-2 h-2 rounded-full bg-gray-400"></div>
             </div>
-            
-            <button
-              onClick={handleBookNow}
-              className="w-full bg-sky-500 hover:bg-sky-600 text-white py-3 rounded-lg transition-colors font-medium"
-            >
-              Book Now
-            </button>
-            
-            <div className="mt-6 text-sm text-gray-600">
-              <p>Price includes all taxes and fees. No hidden charges.</p>
-            </div>
-            
-            <div className="mt-6 border-t border-gray-200 pt-6">
-              <h4 className="font-medium mb-3">Need Help?</h4>
-              <div className="space-y-2">
-                <a href="#" className="flex items-center gap-2 text-sky-600 hover:text-sky-700 transition-colors">
-                  <span>Fare Rules</span>
-                  <ChevronRight className="w-4 h-4" />
-                </a>
-                <a href="#" className="flex items-center gap-2 text-sky-600 hover:text-sky-700 transition-colors">
-                  <span>Baggage Policy</span>
-                  <ChevronRight className="w-4 h-4" />
-                </a>
-                <a href="#" className="flex items-center gap-2 text-sky-600 hover:text-sky-700 transition-colors">
-                  <span>Flight Cancellation</span>
-                  <ChevronRight className="w-4 h-4" />
-                </a>
-              </div>
-            </div>
-          </BlurContainer>
+          </div>
+          
+          <div className="text-center md:text-right">
+            <p className="text-sm text-gray-500">Arrival</p>
+            <h3 className="text-3xl font-bold">{flight.arrivalTime}</h3>
+            <p className="text-gray-700">{flight.arrivalCity} ({flight.arrivalAirport})</p>
+          </div>
         </div>
+        
+        {/* Flight stops information */}
+        <div className="flex justify-center mb-6">
+          <div className="bg-gray-100 py-1 px-4 rounded-full text-sm text-gray-700">
+            {flight.stops === 0 ? "Direct Flight" : flight.stops === 1 ? "1 Stop" : `${flight.stops} Stops`}
+          </div>
+        </div>
+      </BlurContainer>
+      
+      {/* Flight details section */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+        <BlurContainer>
+          <h3 className="text-lg font-medium mb-4">Flight Details</h3>
+          
+          <div className="space-y-4">
+            <div className="flex justify-between">
+              <span className="text-gray-600">Airline</span>
+              <span className="font-medium">{flight.airline}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-600">Flight Number</span>
+              <span className="font-medium">{flight.flightNumber}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-600">Aircraft</span>
+              <span className="font-medium">{flight.aircraft || "Information not available"}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-600">Duration</span>
+              <span className="font-medium">{flight.duration}</span>
+            </div>
+          </div>
+        </BlurContainer>
+        
+        <BlurContainer>
+          <h3 className="text-lg font-medium mb-4">Price Summary</h3>
+          
+          <div className="space-y-4">
+            <div className="flex justify-between">
+              <span className="text-gray-600">Base Fare</span>
+              <span className="font-medium">₹{flight.price - 450}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-600">Taxes & Fees</span>
+              <span className="font-medium">₹450</span>
+            </div>
+            <div className="flex justify-between border-t pt-2 mt-2">
+              <span className="text-gray-700 font-medium">Total Price</span>
+              <span className="text-xl font-bold text-sky-600">₹{flight.price}</span>
+            </div>
+          </div>
+        </BlurContainer>
+      </div>
+      
+      {/* Booking button section */}
+      <div className="text-center">
+        <a
+          href={`/booking/${flight.id}`}
+          className="bg-sky-500 hover:bg-sky-600 text-white px-6 py-3 rounded-lg font-medium inline-flex items-center gap-2 transition-colors"
+        >
+          Book This Flight <ArrowRight className="w-4 h-4" />
+        </a>
+        <p className="mt-2 text-sm text-gray-500">No hidden charges • Free cancellation within 24 hours</p>
       </div>
     </div>
   );
