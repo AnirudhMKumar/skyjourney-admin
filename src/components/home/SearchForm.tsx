@@ -31,6 +31,20 @@ const SearchForm = () => {
     });
   };
 
+  // Popular Indian cities for autocomplete suggestions
+  const popularCities = [
+    "Delhi (DEL)",
+    "Mumbai (BOM)",
+    "Bangalore (BLR)",
+    "Chennai (MAA)",
+    "Kolkata (CCU)",
+    "Hyderabad (HYD)",
+    "Ahmedabad (AMD)",
+    "Kochi (COK)",
+    "Goa (GOI)",
+    "Jaipur (JAI)"
+  ];
+
   return (
     <section id="search" className="py-16 px-6 -mt-28">
       <div className="max-w-6xl mx-auto">
@@ -91,10 +105,16 @@ const SearchForm = () => {
                       id="fromCity"
                       value={fromCity}
                       onChange={(e) => setFromCity(e.target.value)}
-                      placeholder="City or Airport"
+                      placeholder="City or Airport in India"
                       className="w-full p-3 pl-11 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors"
+                      list="fromCityOptions"
                       required
                     />
+                    <datalist id="fromCityOptions">
+                      {popularCities.map((city) => (
+                        <option key={city} value={city} />
+                      ))}
+                    </datalist>
                     <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
                   </div>
                 </div>
@@ -109,10 +129,16 @@ const SearchForm = () => {
                       id="toCity"
                       value={toCity}
                       onChange={(e) => setToCity(e.target.value)}
-                      placeholder="City or Airport"
+                      placeholder="City or Airport in India"
                       className="w-full p-3 pl-11 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors"
+                      list="toCityOptions"
                       required
                     />
+                    <datalist id="toCityOptions">
+                      {popularCities.map((city) => (
+                        <option key={city} value={city} />
+                      ))}
+                    </datalist>
                     <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
                   </div>
                 </div>
